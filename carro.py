@@ -17,4 +17,9 @@ class Carro(Sprite):
 			self.rect.x -= self.velocidad
 		if self.rect.x<=-400:
 			self.rect.x = 680
+		if self.dir == "r":
+			self.rect.x += self.velocidad
+		if self.rect.x>=700:
+			self.rect.x = -400
+
 

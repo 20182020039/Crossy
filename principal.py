@@ -18,15 +18,15 @@ def game():
     pygame.mouse.set_visible( False )
     temporizador = pygame.time.Clock()
     pollo = Pollo()
-    carro = [Carro((100,100),7)]
+    carro = [Carro((100,100),7),Carro((250,300),10),Carro((150,200),5),Carro((120,400),15),Carro((10,150),9),Carro((20,350),16),Carro((320,250),8),Carro((90,50),12)]
     while jugando:
         pollo.update()
-        texto_vida = fuente.render("Puntaje: " + str(pollo.vida), 1, (250, 250, 250))
+        texto_puntaje = fuente.render("Puntaje: " + str(pollo.puntaje), 1, (250, 250, 250))
         for n in carro:
               n.update()
         pollo.image = pollo.imagenes[0]
         if pollo.rect.y == 430 and pollo.dir == "ab":
-            pollo.vida += 1
+            pollo.puntaje += 1
             pollo.dir = "a"
         if pollo.rect.y == 0 and pollo.dir == "a":
             pollo.vida += 1
@@ -41,7 +41,7 @@ def game():
         screen.blit(pollo.image, pollo.rect)
         for n in carro:
             screen.blit(n.image, n.rect)
-        screen.blit(texto_vida, (20, 10))
+        screen.blit(texto_puntaje, (20, 10))
         pygame.display.update()
         pygame.time.delay(10)
 
