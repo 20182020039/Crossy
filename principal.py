@@ -21,7 +21,7 @@ def game():
     pygame.mouse.set_visible( False )
     temporizador = pygame.time.Clock()
     pollo = Pollo()
-    carro = [Carro((100,100),7),Carro((250,300),10),Carro((150,200),5),Carro((120,400),15),Carro((10,150),9),Carro((20,350),16),Carro((320,250),8),Carro((90,50),12)]
+    carro = [Carro((100,100),2),Carro((250,300),3),Carro((150,200),5),Carro((120,400),7),Carro((10,150),2),Carro((20,350),4),Carro((320,250),8),Carro((90,50),10)]
     while jugando:
         pollo.update()
         texto_puntaje = fuente.render("Puntaje: " + str(pollo.puntaje), 1, (250, 250, 250))
@@ -33,7 +33,7 @@ def game():
             pollo.puntaje += 1
             pollo.dir = "a"
         if pollo.rect.y == 0 and pollo.dir == "a":
-            pollo.vida += 1
+            pollo.puntaje += 1
             pollo.dir = "ab"
         for n in carro:
               if pollo.rect.colliderect(n.rect):
@@ -46,18 +46,18 @@ def game():
         for n in carro:
             screen.blit(n.image, n.rect)
         screen.blit(texto_puntaje, (20, 10))
-        screen.blit(texto_puntaje1, (20, 100))
+        screen.blit(texto_puntaje1, (450, 10))
         pygame.display.update()
         pygame.time.delay(10)
         while True:
-        num = pollo.puntaje
-        if num > num1:
-            contenido = str (num)
-            break
-        else:
-            break
-        archivo = open(ruta, 'w')
-
+            num = pollo.puntaje
+            if num > num1:
+                contenido = str (num)
+                archivo = open(ruta, 'w')
+                archivo.write(contenido)
+                break
+            else:
+                break
 
 if __name__ == '__main__':
       game()
