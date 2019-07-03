@@ -7,7 +7,10 @@ SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 ICON_SIZE = 32
 
-def game(): 
+def game():
+    ruta = "C:\Users\sebas\Escritorio\Corosy road\Puntajes.txt"
+    arc = open (ruta, 'r')
+    num1 = int (arc.read())
     pygame.init()
     pygame.mixer.init()
     jugando = True
@@ -22,6 +25,7 @@ def game():
     while jugando:
         pollo.update()
         texto_puntaje = fuente.render("Puntaje: " + str(pollo.puntaje), 1, (250, 250, 250))
+        texto_puntaje1 = fuente.render("Maxio Puntaje: " + str(num1), 1, (250, 250, 250))
         for n in carro:
               n.update()
         pollo.image = pollo.imagenes[0]
@@ -42,8 +46,17 @@ def game():
         for n in carro:
             screen.blit(n.image, n.rect)
         screen.blit(texto_puntaje, (20, 10))
+        screen.blit(texto_puntaje1, (20, 100))
         pygame.display.update()
         pygame.time.delay(10)
+        while True:
+        num = pollo.puntaje
+        if num > num1:
+            contenido = str (num)
+            break
+        else:
+            break
+        archivo = open(ruta, 'w')
 
 
 if __name__ == '__main__':
