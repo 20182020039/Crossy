@@ -8,7 +8,7 @@ SCREEN_HEIGHT = 480
 ICON_SIZE = 32
 
 def game():
-    ruta = "C:\Users\sebas\Escritorio\Corosy road\Puntajes.txt"
+    ruta = "Puntajes.txt"
     arc = open (ruta, 'r')
     num1 = int (arc.read())
     pygame.init()
